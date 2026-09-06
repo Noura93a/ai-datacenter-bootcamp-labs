@@ -1,4 +1,4 @@
-# Week 4 - Day 1: First Kubernetes Cluster
+# Week 4 - Day 1: First Cluster
 
 ## Objective
 
