@@ -8,12 +8,12 @@ The goal of this lab was to run my Week 2 serving container inside a Kubernetes 
 
 ## Predictions
 
-| Question | My Prediction | Result |
+| Question | Prediction | Result |
 |---|---|---|
-| Where does the cluster node live? | On the same team server I am working on. | Correct. The node was `aidc-t08`. |
-| Why does `/health` return 503 before 200? | Because the application is still loading and is not ready yet. | Correct. The backend needs to become ready first. |
-| Are `kubectl logs` and `docker logs` similar? | Yes, both should show the container application logs. | Correct. `kubectl logs serving` showed the Uvicorn logs. |
-| Which pod refusal comes from the scheduler? | `Pending` | Correct. `pod-b` stayed Pending because it requested more CPU than available. |
+| Where does the cluster node live? | Inside a container on the team server. | The node was actually the same machine I was working on, `aidc-t08`, running k3s directly. |
+| Why does `/health` return 503 before returning 200? | The service is still starting and not ready yet. | The backend was still loading, so the service was not ready to return 200 yet. |
+| Are `kubectl logs serving` and `docker logs <container>` the same? | Yes, they are the same. | Not exactly. Both show the container's application logs, but `docker logs` reads logs from a container managed directly by Docker, while `kubectl logs` reads logs from a container running inside a Kubernetes Pod. |
+| Which refusal comes from the Kubernetes scheduler? | `Pending` | Correct. `pod-b` stayed in `Pending` because it requested more CPU than the node could provide. |
 
 ---
 
