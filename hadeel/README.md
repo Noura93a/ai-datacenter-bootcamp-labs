@@ -2,7 +2,7 @@
 
 This folder contains my individual work for the **AI Data Center Operations Bootcamp**.
 
-## 📁 Structure
+##  Structure
 
 - `week4/`
   - `d1/`
@@ -17,7 +17,8 @@ Each week contains my daily lab work, notes, configuration files, and verificati
 ## Progress
 
 ### Week 4
-- Day 1 - First Cluster ✅
+- [x] Day 1 - First Cluster
+- [x] Day 2 - Make It Self-Healing
 
 ## 📝 Notes
 
