@@ -8,7 +8,7 @@ The goal of this lab was to use a Kubernetes Deployment instead of a single pod,
 
 | Question | Prediction | Result |
 |---|---|---|
-| If one of the two pods is deleted while requests are running, how many requests will fail? | A few requests may fail while Kubernetes creates another pod. | No requests failed. The Service kept sending traffic to the available pod while the Deployment created a new one. |
+| If one of the two pods is deleted while requests are running, how many requests will fail? | A few requests may fail while the Deployment controller creates a replacement pod. | No requests failed. The Service kept sending traffic to the available pod while the Deployment created a new one. |
 | During a rolling update, how many requests will fail? | Maybe 1 or 2 requests will fail while the pods are being replaced. | No requests failed during the normal rolling update. |
 | `/health` returns 503 while the backend is loading. Is it better for readiness or liveness? | Readiness, because the pod is running but may not be ready for traffic yet. | Readiness was the better choice. If liveness checks too early, Kubernetes may restart a pod that is still starting normally. |
 | With Card C (`maxUnavailable: 1`, `maxSurge: 0`), how many requests will fail? | I thought a few requests might fail because there is no extra pod during the update. | In my run, 25 requests failed. The exact result can be different in another run. |
@@ -46,7 +46,7 @@ For the liveness probe, I used an initial delay of 20 seconds to give the applic
 
 I deleted one of the two serving pods manually.
 
-Kubernetes created a new pod automatically because the Deployment still had a desired state of two replicas.
+The Deployment controller created a new pod automatically because the desired state was still two replicas.
 
 ![Self-Healing](self_healing.png)
 
@@ -111,15 +111,6 @@ In my test, 25 requests failed during the rollout.
 This showed that Card C can reduce availability during an update because there is no extra capacity.
 
 > Note: My teammates used the same Card C settings, but some of them got `bad=0`. This shows that the exact number of failed requests can be different between runs.
-
-
-### Result
-
-`PROBE RESULT ok=838 bad=25`
-
-![Card C - No Headroom](card_c_no_headroom.png)
-
-There were 25 failed requests. This showed the trade-off of Card C: it does not use extra capacity, but availability can be lower during the update.
 
 ## Final Verification
 
