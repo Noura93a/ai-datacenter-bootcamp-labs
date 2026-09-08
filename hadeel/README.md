@@ -19,6 +19,7 @@ Each week contains my daily lab work, notes, configuration files, and verificati
 ### Week 4
 - [x] Day 1 - First Cluster
 - [x] Day 2 - Make It Self-Healing
+- [x] Day 3 - GPUs in the scheduler's ledger
 
 ## 📝 Notes
 
