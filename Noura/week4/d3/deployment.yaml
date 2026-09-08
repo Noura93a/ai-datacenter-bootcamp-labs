@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serving
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: serving
+  template:
+    metadata:
+      labels:
+        app: serving
+    spec:
+      containers:
+        - name: serving
+          image: noura93/aidc-serving:cpu-v1
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: 250m          # Scheduler reserves 0.25 cores
+              memory: 256Mi
+            limits:
+              cpu: "1"           # Runtime enforces max 1 core
+              memory: 4Gi
+          # -------------------------------------------
+          lifecycle:
+            preStop:
+              sleep:
+                seconds: 5
+          env:
+            - name: MODEL_BACKEND
+              value: "echo"
+            - name: MODEL_ID
+              value: "Qwen/Qwen2.5-0.5B-Instruct"
+            - name: APP_VERSION
+              value: "v1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 2
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 60
+            periodSeconds: 5
