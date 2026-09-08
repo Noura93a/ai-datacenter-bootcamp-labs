@@ -7,6 +7,7 @@ This folder contains my individual work for the **AI Data Center Operations Boot
 - `week4/`
   - `d1/`
   - `d2/`
+  - `d3/`
   - ...
 - `week5/`
 - `week6/`
