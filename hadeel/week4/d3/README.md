@@ -1,4 +1,4 @@
-# Week 4 Day 3 - Scheduling is Accounting
+# Week 4 Day 3 - GPUs in the scheduler's ledger
 
 In this lab, I learned how Kubernetes uses resource requests and limits when scheduling CPU and GPU workloads. I also tested how background CPU workloads can affect serving latency.
 
