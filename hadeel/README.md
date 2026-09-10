@@ -9,6 +9,7 @@ This folder contains my individual work for the **AI Data Center Operations Boot
   - `d2/`
   - `d3/`
   - `d4/`
+  - `d5/`
   - ...
 - `week5/`
 - `week6/`
@@ -23,6 +24,7 @@ Each week contains my daily lab work, notes, configuration files, and verificati
 - [x] Day 2 - Make It Self-Healing
 - [x] Day 3 - GPUs in the scheduler's ledger
 - [x] Day 4 - package it, then let it breathe
+- [x] Day 5 - go-live
 
 ## 📝 Notes
 
