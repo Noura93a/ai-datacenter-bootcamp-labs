@@ -1,0 +1,24 @@
+{
+  "runs": [
+    {
+      "timestamp": 1789053391,
+      "base_url": "https://t08.aidc.nadir.sh",
+      "model": "Qwen/Qwen2.5-1.5B-Instruct-AWQ",
+      "requests_per_level": 64,
+      "max_tokens": 128,
+      "prompt_file": "w3d5-benchmark-harness/prompts.txt",
+      "levels": [
+        {
+          "concurrency": 32,
+          "tokens_per_s": 4489.77,
+          "ttft_p50_s": 0.2085,
+          "ttft_p95_s": 0.2501,
+          "latency_p95_s": 0.8123,
+          "errors": 0,
+          "ok": 64,
+          "wall_s": 1.488
+        }
+      ]
+    }
+  ]
+}

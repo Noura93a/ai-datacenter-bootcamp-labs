@@ -1,0 +1,64 @@
+{
+  "runs": [
+    {
+      "timestamp": 1789053191,
+      "base_url": "https://t08.aidc.nadir.sh",
+      "model": "Qwen/Qwen2.5-1.5B-Instruct-AWQ",
+      "requests_per_level": 20,
+      "max_tokens": 128,
+      "prompt_file": "w3d5-benchmark-harness/prompts.txt",
+      "levels": [
+        {
+          "concurrency": 1,
+          "tokens_per_s": 248.95,
+          "ttft_p50_s": 0.0817,
+          "ttft_p95_s": 0.1086,
+          "latency_p95_s": 0.5179,
+          "errors": 0,
+          "ok": 20,
+          "wall_s": 8.58
+        },
+        {
+          "concurrency": 2,
+          "tokens_per_s": 466.7,
+          "ttft_p50_s": 0.0869,
+          "ttft_p95_s": 0.1161,
+          "latency_p95_s": 0.5344,
+          "errors": 0,
+          "ok": 20,
+          "wall_s": 4.573
+        },
+        {
+          "concurrency": 4,
+          "tokens_per_s": 890.77,
+          "ttft_p50_s": 0.0861,
+          "ttft_p95_s": 0.0989,
+          "latency_p95_s": 0.5257,
+          "errors": 0,
+          "ok": 20,
+          "wall_s": 2.398
+        },
+        {
+          "concurrency": 8,
+          "tokens_per_s": 1613.85,
+          "ttft_p50_s": 0.0921,
+          "ttft_p95_s": 0.1362,
+          "latency_p95_s": 0.5412,
+          "errors": 0,
+          "ok": 20,
+          "wall_s": 1.324
+        },
+        {
+          "concurrency": 16,
+          "tokens_per_s": 2419.71,
+          "ttft_p50_s": 0.1381,
+          "ttft_p95_s": 0.1639,
+          "latency_p95_s": 0.6115,
+          "errors": 0,
+          "ok": 20,
+          "wall_s": 0.872
+        }
+      ]
+    }
+  ]
+}
