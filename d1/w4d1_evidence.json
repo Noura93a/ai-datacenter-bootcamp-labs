@@ -1,0 +1,1 @@
+{"cluster": "aidc", "pod": "serving", "image": "shurooqaljohani/aidc-serving:cpu-v1", "node": "aidc-control-plane", "chat_status": 200}

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: engine-load
+spec:
+  restartPolicy: Never
+  containers:
+  - name: loadgen
+    image: shurooqaljohani/aidc-serving:cpu-v1
+    env:
+    - name: LG_MODEL
+      value: ""
+    - name: LG_KEY
+      value: "d42b8838eea702ee9e0ad2e6bf3b739d"
+    command: ["python", "-c"]
+    args:
+    - |
+      import json, os, threading, time, urllib.request
+      BODY = json.dumps({"model": os.environ["LG_MODEL"], "messages": [{"role": "user", "content": "write two paragraphs about load"}], "max_tokens": 200}).encode()
+      HDRS = {"Content-Type": "application/json", "Authorization": "Bearer " + os.environ["LG_KEY"]}
+      def worker():
+          end = time.time() + 90
+          while time.time() < end:
+              try:
+                  urllib.request.urlopen(urllib.request.Request(
+                      "http://team.svc", data=BODY, headers=HDRS), timeout=30).read()
+              except Exception:
+                  time.sleep(0.2)
+      threads = [threading.Thread(target=worker) for _ in range(32)]
+      for t in threads: t.start()
+      for t in threads: t.join()

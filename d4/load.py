@@ -1,0 +1,13 @@
+import json, threading, time, urllib.request
+BODY = json.dumps({"model": "Qwen/Qwen2.5-0.5B-Instruct", "messages": [{"role": "user", "content": "repeat the word load " * 60}], "max_tokens": 200}).encode()
+def worker():
+    end = time.time() + 240
+    while time.time() < end:
+        try:
+            req = urllib.request.Request("http://team-serving:8000/v1/chat/completions", data=BODY, headers={"Content-Type": "application/json"})
+            urllib.request.urlopen(req, timeout=10).read()
+        except Exception:
+            time.sleep(0.2)
+threads = [threading.Thread(target=worker) for _ in range(24)]
+for t in threads: t.start()
+for t in threads: t.join()
