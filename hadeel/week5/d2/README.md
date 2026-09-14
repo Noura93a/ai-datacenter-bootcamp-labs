@@ -2,7 +2,7 @@
 
 In this lab, we configured Grafana alerts for the team vLLM service and verified that alert notifications can be delivered through a webhook receiver.
 
-## What I did
+## What WE did
 
 - Reused the existing Grafana and Prometheus setup.
 - Configured the `Lab inbox` webhook contact point.
